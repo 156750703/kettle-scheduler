@@ -10,7 +10,7 @@ Kettle调度监控平台（以下简称KS）是一个自主开发的javaweb程�
 项目源码：https://github.com/zhaxiaodong9860/kettle-scheduler
 
 ## 部署
-基础环境
+### 基础环境
 操作系统：windows（linux类似）
 预装软件：jdk1.8、mysql、tomcat、kettle8.0
 将源码中kettle-scheduler.sql导入mysql数据库。
@@ -19,14 +19,14 @@ Kettle调度监控平台（以下简称KS）是一个自主开发的javaweb程�
 将源码编译打包后解压到tomcat下的webapps目录下。
 
 
-配置km\WEB-INF\classes\resource\db.properties
+### 配置km\WEB-INF\classes\resource\db.properties
 jdbc.driver=com.mysql.jdbc.Driver   //mysql驱动
 jdbc.url=jdbc:mysql://192.22.107.97:3306/kettle-master?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false   //mysql的jdbc url
 jdbc.username=root  //mysql用户名
 jdbc.password=123456   //mysql密码
 
 
-配置km\WEB-INF\classes\resource\ kettle.properties
+### 配置km\WEB-INF\classes\resource\ kettle.properties
 kettle.home=WEB-INF\\lib   //kettlehome路径, 此处不用修改，但是需要将kettle8.0的环境变量文件kettle.properties拷贝替换掉项目路径km\WEB-INF\lib\.kettle下的同名文件
 kettle.plugin=E:\\zhaxiaodong\\plugins   //kettle插件目录，可以自定义一个目录，然后将data-integration\plugins目录下所需的插件拷贝到此目录下
 kettle.script=Html\\js\\libs\\url   //kettle所用到的js文件，目前未使用到
@@ -35,16 +35,15 @@ kettle.log.file.path=D:\\data-integration\\logs  //执行kettle转换和作业�
 kettle.file.repository=D:\\data-integration\\test   //存放上传的文件作业或文件转换的路径，此功能已屏蔽，无需修改
 
 
-
 将data-integration目录下的simple-jndi和system文件夹拷贝到apache-tomcat-9.0.12\bin目录下
-配置\apache-tomcat-9.0.12\conf\ server.xml
+### 配置\apache-tomcat-9.0.12\conf\ server.xml
 <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" />    //配置端口号
 <Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
 <Context path="/km" docBase="/km"  reloadable ="true" debug="0" privileged="true"> </Context> 
 … 
 </Host>
 
-启动tomcat
+### 启动tomcat
 Windows:apache-tomcat-9.0.12\bin\startup.bat;
 Linux: apache-tomcat-9.0.12\bin\startup.sh;
 访问http://localhost:8080/km进入系统。
